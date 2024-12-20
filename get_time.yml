@@ -1,0 +1,11 @@
+---
+- name: Get current time from all nodes
+  hosts: webservers
+  tasks:
+    - name: Get current time
+      command: date
+      register: current_time
+
+    - name: Display the current time
+      debug:
+        msg: "Current time on {{ inventory_hostname }} is {{ current_time.stdout }}"
